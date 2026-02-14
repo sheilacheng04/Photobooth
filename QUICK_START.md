@@ -87,9 +87,9 @@ CREATE INDEX IF NOT EXISTS idx_guestbook_created_at
 **In Supabase dashboard:**
 1. Click **Settings** → **API**
 2. Find and copy:
-   - **Project URL** (looks like `https://xxxxx.supabase.co`)
-   - **anon public key** (long string starting with `eyJh...`)
-   - **Service Role key** (long string starting with `eyJh...`, marked PRIVATE)
+   - **Project URL** https://qdclzcwiciewnviiohls.supabase.co
+   - **anon public key** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkY2x6Y3dpY2lld252aWlvaGxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwNDc5NzksImV4cCI6MjA4NjYyMzk3OX0.1qLGd0d421yRUJBxGCZKRo2suHUT-RACjsyw1cdUvt8
+   - **Service Role key** eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkY2x6Y3dpY2lld252aWlvaGxzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MTA0Nzk3OSwiZXhwIjoyMDg2NjIzOTc5fQ.UxDZtdVoKWc3qlH9d646GvCDzGBMHC5qn9Ya22BHIdM
 
 **Save these in a text editor for Step 3!**
 
