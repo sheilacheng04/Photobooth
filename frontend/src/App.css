@@ -1,0 +1,326 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE REGENCY KEEPSAKE — App.css
+   Gilded Borders · Parchment Stationery · Wax Seals
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ───────────────── Gilded Horizontal Rule ───────────────── */
+.gilded-rule {
+  width: 280px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #d4af37 15%,
+    #f5e6a3 50%,
+    #d4af37 85%,
+    transparent 100%
+  );
+  position: relative;
+}
+
+.gilded-rule::before {
+  content: '⚜';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #d4af37;
+  background: #fffdd0;
+  padding: 0 12px;
+}
+
+/* ───────────────── Section Card ───────────────── */
+.section-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 253, 208, 0.9) 0%,
+    rgba(255, 253, 208, 0.7) 100%
+  );
+  border: 2px solid rgba(212, 175, 55, 0.35);
+  border-radius: 4px;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow:
+    0 1px 3px rgba(212, 175, 55, 0.08),
+    inset 0 0 60px rgba(212, 175, 55, 0.04);
+}
+
+/* Corner ornaments */
+.section-card::before,
+.section-card::after {
+  content: '❧';
+  position: absolute;
+  font-size: 24px;
+  color: rgba(212, 175, 55, 0.35);
+  line-height: 1;
+}
+
+.section-card::before {
+  top: 8px;
+  left: 12px;
+}
+
+.section-card::after {
+  bottom: 8px;
+  right: 12px;
+  transform: rotate(180deg);
+}
+
+/* ───────────────── Gold Ornate Frame (Photobooth) ───────────────── */
+.gold-frame {
+  width: 320px;
+  height: 400px;
+  border: 12px solid;
+  border-image: linear-gradient(
+    135deg,
+    #91742d 0%,
+    #d4af37 20%,
+    #f5e6a3 40%,
+    #d4af37 60%,
+    #91742d 80%,
+    #d4af37 100%
+  ) 1;
+  box-shadow:
+    0 0 0 3px #91742d,
+    0 0 0 6px rgba(212, 175, 55, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.1),
+    4px 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    145deg,
+    #f5f0e1 0%,
+    #ede5d0 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.gold-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Portrait with sepia filter */
+.portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.1) brightness(1.05);
+}
+
+.portrait-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ───────────────── Stationery (Typewriter Textarea) ───────────────── */
+.stationery {
+  width: 100%;
+  background-color: #fffdd0;
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      rgba(176, 196, 222, 0.35) 31px,
+      rgba(176, 196, 222, 0.35) 32px
+    );
+  font-family: 'Special Elite', monospace;
+  font-size: 15px;
+  color: #2c1810;
+  line-height: 32px;
+  padding: 8px 16px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 2px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stationery:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.stationery::placeholder {
+  color: rgba(44, 24, 16, 0.3);
+  font-style: italic;
+}
+
+/* ───────────────── Stationery Input ───────────────── */
+.stationery-input {
+  width: 100%;
+  background-color: #fffdd0;
+  font-family: 'Special Elite', monospace;
+  font-size: 15px;
+  color: #2c1810;
+  padding: 10px 16px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stationery-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.stationery-input::placeholder {
+  color: rgba(44, 24, 16, 0.3);
+  font-style: italic;
+}
+
+/* ───────────────── Regency Buttons ───────────────── */
+.regency-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fffdd0;
+  background: linear-gradient(135deg, #d4af37 0%, #91742d 100%);
+  border: 1px solid #91742d;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(145, 116, 45, 0.3);
+}
+
+.regency-btn:hover {
+  background: linear-gradient(135deg, #e6c84a 0%, #a6863a 100%);
+  box-shadow: 0 4px 16px rgba(145, 116, 45, 0.4);
+  transform: translateY(-1px);
+}
+
+.regency-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(145, 116, 45, 0.3);
+}
+
+.regency-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.regency-btn--outline {
+  background: transparent;
+  color: #91742d;
+  border: 2px solid #d4af37;
+}
+
+.regency-btn--outline:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: #91742d;
+}
+
+.regency-btn--seal {
+  background: linear-gradient(135deg, #961216 0%, #6b0d10 100%);
+  border-color: #6b0d10;
+  box-shadow: 0 2px 8px rgba(150, 18, 22, 0.3);
+}
+
+.regency-btn--seal:hover {
+  background: linear-gradient(135deg, #b01519 0%, #7f1013 100%);
+  box-shadow: 0 4px 16px rgba(150, 18, 22, 0.4);
+}
+
+/* ───────────────── Wax Seal ───────────────── */
+.wax-seal {
+  width: 50px;
+  height: 50px;
+  background: #961216;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 2px 2px 5px rgba(255, 255, 255, 0.2),
+    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
+    2px 4px 6px rgba(0, 0, 0, 0.3);
+  clip-path: polygon(
+    50% 0%,
+    80% 10%,
+    100% 35%,
+    100% 70%,
+    80% 90%,
+    50% 100%,
+    20% 90%,
+    0% 70%,
+    0% 35%,
+    20% 10%
+  );
+}
+
+.wax-seal-letter {
+  font-family: 'Playfair Display', serif;
+  color: #d4af37;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ───────────────── Ledger Form ───────────────── */
+.ledger-form {
+  width: 100%;
+  max-width: 42rem;
+  background: rgba(255, 253, 208, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ───────────────── Ledger Entry ───────────────── */
+.ledger-entry {
+  background: rgba(255, 253, 208, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  padding: 1.25rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ledger-entry:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.1);
+}
+
+/* ───────────────── Keepsake capture area ───────────────── */
+.keepsake-capture-area {
+  padding: 1rem;
+}
+
+/* ───────────────── ScrollReveal text ───────────────── */
+.scroll-reveal-text {
+  will-change: transform, opacity;
+}
+
+/* ───────────────── Responsive Tweaks ───────────────── */
+@media (max-width: 640px) {
+  .gold-frame {
+    width: 260px;
+    height: 340px;
+    border-width: 8px;
+  }
+
+  .section-card {
+    padding: 1.5rem;
+  }
+}

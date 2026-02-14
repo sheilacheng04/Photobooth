@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────── Global Reset & Base ───────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: #fffdd0;
+  color: #2c1810;
+  min-height: 100vh;
+}
+
+/* ───────────────── Parchment Texture (CSS-only) ───────────────── */
+.parchment-bg {
+  background-color: #fffdd0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      rgba(212, 175, 55, 0.03) 50px,
+      rgba(212, 175, 55, 0.03) 51px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 50px,
+      rgba(212, 175, 55, 0.03) 50px,
+      rgba(212, 175, 55, 0.03) 51px
+    ),
+    radial-gradient(ellipse at 20% 50%, rgba(176, 196, 222, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(150, 18, 22, 0.04) 0%, transparent 50%);
+}
