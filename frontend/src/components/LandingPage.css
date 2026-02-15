@@ -1,0 +1,266 @@
+/* ═══════════════════════════════════════════════════════════════
+   LANDING PAGE — Cottagecore-Coquette Design
+   ═══════════════════════════════════════════════════════════════ */
+
+.landing-page {
+  min-height: 100vh;
+  background-color: #FFF5F7;
+  background-image:
+    /* Soft floral radial accents */
+    radial-gradient(ellipse at 15% 30%, rgba(226, 157, 164, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(138, 154, 91, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(183, 110, 121, 0.06) 0%, transparent 60%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Rose gold border with spacing */
+  border: 3px double #B76E79;
+  box-sizing: border-box;
+  padding: 24px;
+  margin: 16px;
+  border-radius: 1.5rem;
+}
+
+/* Lace texture overlay */
+.landing-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20px 20px, rgba(226, 157, 164, 0.04) 2px, transparent 2px),
+    radial-gradient(circle at 40px 40px, rgba(183, 110, 121, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Floating petals (unused but kept for future) */
+.flower-decoration,
+.petal {
+  display: none;
+}
+
+@keyframes float-petal {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(100px) rotate(360deg); opacity: 0; }
+}
+
+/* ═══════════════ MAIN CONTENT ═══════════════ */
+
+.landing-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.landing-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════ ORNATE FRAME ═══════════════ */
+
+.ornate-frame {
+  position: relative;
+  background: #FFFDD0;
+  border: 3px double #B76E79;
+  border-radius: 50% 50% 55% 45% / 60% 50% 50% 40%;
+  padding: 6rem 6.5rem 5.5rem 6.5rem;
+  max-width: 600px;
+  min-width: 520px;
+  box-shadow:
+    0 0 0 8px rgba(183, 110, 121, 0.08),
+    0 15px 50px rgba(183, 110, 121, 0.12),
+    0 0 80px rgba(226, 157, 164, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner dashed lace border */
+.ornate-frame::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(183, 110, 121, 0.2);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Top ornament */
+.frame-top-ornament {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  z-index: 10;
+}
+
+.corner-ornament {
+  display: none;
+}
+
+/* ═══════════════ INVITATION TEXT ═══════════════ */
+
+.invitation-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.invitation-subtitle {
+  font-family: 'Montserrat', 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #B76E79;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.invitation-byline {
+  display: none;
+}
+
+.invitation-title-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #B76E79;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: 0.05em;
+}
+
+.invitation-title-coquette {
+  font-family: 'Great Vibes', 'Brush Script MT', cursive;
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #E29DA4;
+  margin: 0.25rem 0 1.5rem 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.invitation-presenter {
+  font-family: 'Montserrat', 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: #B76E79;
+  margin: 1.5rem 0 0 0;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+  font-weight: 300;
+}
+
+.invitation-presenter span {
+  font-style: normal;
+}
+
+.gilded-rule-landing,
+.event-details,
+.invitation-description,
+.landing-footer,
+.floral-border-bottom {
+  display: none;
+}
+
+/* ═══════════════ ENTER BUTTON ═══════════════ */
+
+.enter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 14px 36px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFFDD0;
+  background: linear-gradient(135deg, #E29DA4 0%, #B76E79 100%);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 4px 20px rgba(183, 110, 121, 0.3),
+    0 0 30px rgba(226, 157, 164, 0.15);
+  margin-top: 1.75rem;
+}
+
+.enter-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 30px rgba(183, 110, 121, 0.4),
+    0 0 40px rgba(226, 157, 164, 0.2);
+}
+
+.enter-button:active {
+  transform: translateY(-1px) scale(1);
+}
+
+.button-text {
+  position: relative;
+}
+
+.button-decoration {
+  font-size: 14px;
+}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+
+@media (max-width: 768px) {
+  .ornate-frame {
+    padding: 3rem 2.5rem;
+    max-width: 400px;
+    min-width: 340px;
+  }
+
+  .invitation-title-coquette {
+    font-size: 2.5rem;
+  }
+
+  .invitation-title-main {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-page {
+    margin: 8px;
+    padding: 16px;
+  }
+
+  .ornate-frame {
+    padding: 2.5rem 1.75rem;
+    max-width: 300px;
+    min-width: 270px;
+  }
+
+  .invitation-title-coquette {
+    font-size: 2rem;
+  }
+
+  .invitation-title-main {
+    font-size: 1.1rem;
+  }
+
+  .frame-top-ornament {
+    font-size: 24px;
+  }
+
+  .enter-button {
+    padding: 12px 28px;
+    font-size: 12px;
+  }
+}

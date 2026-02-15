@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
 
-const WhistledownTypewriter = ({ keepsakeRef, portraitRef }) => {
-  const [letter, setLetter] = useState('');
-  const [name, setName] = useState('');
+const WhistledownTypewriter = ({ keepsakeRef, galleryRef, capturedImage, letter, setLetter, name, setName }) => {
   const [isSaving, setIsSaving] = useState(false);
+
+  const takePhoto = () => {
+    if (galleryRef?.current) {
+      galleryRef.current.takePhoto();
+    }
+  };
+
+  const handleRetake = () => {
+    if (galleryRef?.current) {
+      galleryRef.current.handleRetake();
+    }
+  };
 
   const handleSeal = async () => {
     const target = keepsakeRef?.current;
@@ -29,72 +39,68 @@ const WhistledownTypewriter = ({ keepsakeRef, portraitRef }) => {
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <h2 className="font-playfair text-3xl md:text-4xl font-bold text-antique-gold mb-2 tracking-wide text-center">
-        The Whistledown Typewriter
-      </h2>
-      <p className="font-typewriter text-sm text-amber-800/70 mb-8 text-center">
-        Compose thy sentiments upon this fine stationery
-      </p>
-
-      {/* Author name */}
-      <div className="w-full max-w-xl mb-4">
-        <label className="block font-playfair text-sm text-amber-900 mb-1">
-          Thy Name
-        </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Lady Whistledown"
-          className="stationery-input"
-        />
-      </div>
-
-      {/* Letter textarea */}
-      <div className="w-full max-w-xl mb-6">
-        <label className="block font-playfair text-sm text-amber-900 mb-1">
-          Thy Letter
-        </label>
-        <textarea
-          value={letter}
-          onChange={(e) => setLetter(e.target.value)}
-          placeholder="Dearest reader, it has come to my attention that..."
-          rows={8}
-          className="stationery"
-        />
-      </div>
-
-      {/* Seal for Delivery */}
-      <button
-        onClick={handleSeal}
-        disabled={isSaving}
-        className="regency-btn regency-btn--seal"
-      >
-        {isSaving ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-                fill="none"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              />
-            </svg>
-            Sealing...
-          </span>
+    <section className="flex flex-col items-center w-full h-full gap-5">
+      {/* TOP: Take Photo / Retake Button */}
+      <div className="w-full flex justify-center">
+        {capturedImage ? (
+          <button onClick={handleRetake} className="regency-btn w-full max-w-xl text-base py-3">
+            🌸 Retake Photo 🌸
+          </button>
         ) : (
-          '⚜ Seal for Delivery ⚜'
+          <button onClick={takePhoto} className="regency-btn w-full max-w-xl text-base py-3">
+            🌸 Take Photo 🌸
+          </button>
         )}
-      </button>
+      </div>
+
+      {/* MIDDLE: Name + Letter Input */}
+      <div className="w-full max-w-xl flex-1 flex flex-col gap-4">
+        <div>
+          <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+            Thy Name
+          </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Lady Whistledown"
+            className="stationery-input"
+          />
+        </div>
+        <div className="flex-1 flex flex-col">
+          <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+            Thy Letter
+          </label>
+          <textarea
+            value={letter}
+            onChange={(e) => setLetter(e.target.value)}
+            placeholder="Dearest reader, it has come to my attention that..."
+            rows={8}
+            className="stationery flex-1"
+          />
+        </div>
+      </div>
+
+      {/* BOTTOM: Seal for Delivery Button */}
+      <div className="w-full flex justify-center">
+        <button
+          onClick={handleSeal}
+          disabled={isSaving}
+          className="regency-btn regency-btn--seal w-full max-w-xl text-base py-3"
+        >
+          {isSaving ? (
+            <span className="flex items-center justify-center gap-2">
+              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+              </svg>
+              Sealing...
+            </span>
+          ) : (
+            '🌿 Seal with Love 🌿'
+          )}
+        </button>
+      </div>
     </section>
   );
 };

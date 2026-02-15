@@ -59,107 +59,121 @@ const SocietyLedger = () => {
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <h2 className="font-playfair text-3xl md:text-4xl font-bold text-antique-gold mb-2 tracking-wide text-center">
-        The Society Ledger
-      </h2>
-      <p className="font-typewriter text-sm text-amber-800/70 mb-8 text-center">
-        Inscribe thy name upon the registry of distinguished guests
-      </p>
+    <section>
+      {/* Two-column grid: Form (left) + Entries (right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* LEFT COLUMN: The Guestbook Form */}
+        <div>
+          <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1">
+            Leave a Note
+          </h3>
+          <p className="font-body text-xs text-aged-rose mb-5 font-light">
+            Inscribe thy name upon the registry
+          </p>
 
-      {/* ── Entry Form ── */}
-      <form onSubmit={handleSubmit} className="ledger-form">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="block font-playfair text-sm text-amber-900 mb-1">
-              Thy Name <span className="text-wax-red">*</span>
-            </label>
-            <input
-              type="text"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData((f) => ({ ...f, name: e.target.value }))}
-              placeholder="The Duke of Hastings"
-              className="stationery-input"
-            />
-          </div>
-          <div>
-            <label className="block font-playfair text-sm text-amber-900 mb-1">
-              Title / Honorific
-            </label>
-            <input
-              type="text"
-              value={formData.title}
-              onChange={(e) => setFormData((f) => ({ ...f, title: e.target.value }))}
-              placeholder="Viscount, Lady, etc."
-              className="stationery-input"
-            />
+          <form onSubmit={handleSubmit} className="ledger-form">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+                  Thy Name <span className="text-deep-rose">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData((f) => ({ ...f, name: e.target.value }))}
+                  placeholder="The Duke of Hastings"
+                  className="stationery-input"
+                />
+              </div>
+              <div>
+                <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+                  Title / Honorific
+                </label>
+                <input
+                  type="text"
+                  value={formData.title}
+                  onChange={(e) => setFormData((f) => ({ ...f, title: e.target.value }))}
+                  placeholder="Viscount, Lady, etc."
+                  className="stationery-input"
+                />
+              </div>
+            </div>
+            <div className="mb-5">
+              <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+                Message <span className="text-deep-rose">*</span>
+              </label>
+              <textarea
+                required
+                value={formData.message}
+                onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
+                placeholder="What a splendid evening of refinement..."
+                rows={4}
+                className="stationery"
+              />
+            </div>
+            <button type="submit" disabled={submitting} className="regency-btn w-full">
+              {submitting ? 'Inscribing...' : '✿ Sign the Ledger'}
+            </button>
+          </form>
+
+          {/* ScrollReveal Quote */}
+          <div className="mt-8 px-2">
+            <ScrollReveal>
+              All the world is made of faith, and trust, and pixie dust — and the memories we seal within these pages shall endure beyond the Season.
+            </ScrollReveal>
           </div>
         </div>
-        <div className="mb-4">
-          <label className="block font-playfair text-sm text-amber-900 mb-1">
-            Message <span className="text-wax-red">*</span>
-          </label>
-          <textarea
-            required
-            value={formData.message}
-            onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
-            placeholder="What a splendid evening of refinement and revelry..."
-            rows={4}
-            className="stationery"
-          />
-        </div>
-        <button type="submit" disabled={submitting} className="regency-btn w-full">
-          {submitting ? 'Inscribing...' : '✒ Sign the Ledger'}
-        </button>
-      </form>
 
-      {/* ── ScrollReveal Quote ── */}
-      <div className="my-12 max-w-2xl px-4">
-        <ScrollReveal>
-          All the world is made of faith, and trust, and pixie dust — and the memories we seal within these pages shall endure beyond the Season.
-        </ScrollReveal>
-      </div>
+        {/* RIGHT COLUMN: Live Feedbacks */}
+        <div>
+          <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1">
+            The Guest Ledger
+          </h3>
+          <p className="font-body text-xs text-aged-rose mb-5 font-light">
+            Notes from distinguished visitors
+          </p>
 
-      {/* ── Entries List ── */}
-      <div className="w-full max-w-2xl">
-        {loading ? (
-          <p className="text-center font-typewriter text-amber-800/60 py-8">
-            Consulting the ledger...
-          </p>
-        ) : entries.length === 0 ? (
-          <p className="text-center font-typewriter text-amber-800/60 py-8">
-            The ledger awaits its first distinguished guest.
-          </p>
-        ) : (
-          <ul className="space-y-6">
-            {entries.map((entry) => (
-              <li key={entry.id} className="ledger-entry">
-                <div className="flex items-start gap-4">
-                  <WaxSeal letter={entry.name?.charAt(0)?.toUpperCase() || 'W'} />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                      <span className="font-signature text-2xl text-wax-red">
-                        {entry.name}
-                      </span>
-                      {entry.title && (
-                        <span className="font-playfair text-xs text-antique-gold italic">
-                          — {entry.title}
-                        </span>
-                      )}
+          <div className="max-h-[600px] overflow-y-auto pr-2 space-y-4" style={{ scrollbarWidth: 'thin', scrollbarColor: '#E29DA4 #FFF5F7' }}>
+            {loading ? (
+              <p className="text-center font-body text-aged-rose/60 py-8">
+                Consulting the ledger...
+              </p>
+            ) : entries.length === 0 ? (
+              <p className="text-center font-body text-aged-rose/60 py-8 italic">
+                The ledger awaits its first distinguished guest.
+              </p>
+            ) : (
+              <ul className="space-y-4">
+                {entries.map((entry) => (
+                  <li key={entry.id} className="ledger-entry">
+                    <div className="flex items-start gap-3">
+                      <WaxSeal letter={entry.name?.charAt(0)?.toUpperCase() || 'K'} />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-baseline gap-2 flex-wrap">
+                          <span className="font-signature text-xl text-deep-rose">
+                            {entry.name}
+                          </span>
+                          {entry.title && (
+                            <span className="font-playfair text-xs text-rose-gold/70 italic">
+                              — {entry.title}
+                            </span>
+                          )}
+                        </div>
+                        <p className="font-body text-sm text-rose-gold/80 mt-1.5 leading-relaxed font-light">
+                          {entry.message}
+                        </p>
+                        <time className="block font-body text-xs text-aged-rose/40 mt-2 font-light">
+                          {formatDate(entry.created_at)}
+                        </time>
+                      </div>
                     </div>
-                    <p className="font-typewriter text-sm text-amber-900/80 mt-1 leading-relaxed">
-                      {entry.message}
-                    </p>
-                    <time className="block font-typewriter text-xs text-amber-700/50 mt-2">
-                      {formatDate(entry.created_at)}
-                    </time>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

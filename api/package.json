@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "nest build",
+    "build": "tsc src/main.ts src/app.module.ts src/guestbook/guestbook.module.ts src/guestbook/guestbook.service.ts src/guestbook/guestbook.controller.ts src/guestbook/dto/create-entry.dto.ts src/supabase/supabase.module.ts src/supabase/supabase.service.ts --experimentalDecorators --emitDecoratorMetadata --skipLibCheck --module commonjs --target ES2021 --declaration --removeComments --sourceMap --outDir dist",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "npm run build && node dist/main.js",
     "start:prod": "node dist/main"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "@supabase/supabase-js": "^2.45.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "dotenv": "^17.3.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

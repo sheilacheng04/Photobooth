@@ -1,4 +1,4 @@
-const WaxSeal = ({ letter = 'W', size = 50 }) => {
+const WaxSeal = ({ letter = 'K', size = 45 }) => {
   return (
     <div
       className="wax-seal flex-shrink-0"

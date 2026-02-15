@@ -68,7 +68,7 @@ const ScrollReveal = ({
   return (
     <h2
       ref={containerRef}
-      className="scroll-reveal-text font-playfair text-xl md:text-2xl text-center leading-relaxed text-amber-900/80"
+      className="scroll-reveal-text font-playfair text-xl md:text-2xl text-center leading-relaxed text-rose-gold/80 italic"
     >
       {splitText}
     </h2>

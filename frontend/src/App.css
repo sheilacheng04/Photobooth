@@ -1,96 +1,84 @@
 /* ═══════════════════════════════════════════════════════════════
-   THE REGENCY KEEPSAKE — App.css
-   Gilded Borders · Parchment Stationery · Wax Seals
+   THE KEEPSAKE CORNER — App.css
+   Cottagecore-Coquette · Rose Gold · Vintage Cream · Lace
    ═══════════════════════════════════════════════════════════════ */
 
-/* ───────────────── Gilded Horizontal Rule ───────────────── */
+/* ───────────────── Rose Vine Divider ───────────────── */
 .gilded-rule {
-  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gilded-rule::before,
+.gilded-rule::after {
+  content: '';
+  flex: 1;
   height: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #d4af37 15%,
-    #f5e6a3 50%,
-    #d4af37 85%,
+    #B76E79 20%,
+    #E29DA4 50%,
+    #B76E79 80%,
     transparent 100%
   );
-  position: relative;
 }
 
-.gilded-rule::before {
-  content: '⚜';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-  color: #d4af37;
-  background: #fffdd0;
-  padding: 0 12px;
+.gilded-rule span {
+  font-size: 20px;
+  color: #E29DA4;
+  padding: 0 16px;
+  text-shadow: none;
 }
 
-/* ───────────────── Section Card ───────────────── */
+/* ───────────────── Cottage Card ───────────────── */
 .section-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 253, 208, 0.9) 0%,
-    rgba(255, 253, 208, 0.7) 100%
-  );
-  border: 2px solid rgba(212, 175, 55, 0.35);
-  border-radius: 4px;
+  background: #FFFDD0;
+  border: 2px double #B76E79;
+  border-radius: 1.5rem;
   padding: 2.5rem;
   position: relative;
   box-shadow:
-    0 1px 3px rgba(212, 175, 55, 0.08),
-    inset 0 0 60px rgba(212, 175, 55, 0.04);
+    0 4px 25px rgba(183, 110, 121, 0.1),
+    0 1px 4px rgba(183, 110, 121, 0.06);
 }
 
-/* Corner ornaments */
 .section-card::before,
 .section-card::after {
-  content: '❧';
+  content: '✿';
   position: absolute;
-  font-size: 24px;
-  color: rgba(212, 175, 55, 0.35);
+  font-size: 18px;
+  color: rgba(226, 157, 164, 0.4);
   line-height: 1;
 }
 
 .section-card::before {
-  top: 8px;
-  left: 12px;
+  top: 12px;
+  left: 16px;
 }
 
 .section-card::after {
-  bottom: 8px;
-  right: 12px;
-  transform: rotate(180deg);
+  bottom: 12px;
+  right: 16px;
 }
 
-/* ───────────────── Gold Ornate Frame (Photobooth) ───────────────── */
+/* ───────────────── Portrait Frame ───────────────── */
 .gold-frame {
   width: 320px;
   height: 400px;
-  border: 12px solid;
-  border-image: linear-gradient(
-    135deg,
-    #91742d 0%,
-    #d4af37 20%,
-    #f5e6a3 40%,
-    #d4af37 60%,
-    #91742d 80%,
-    #d4af37 100%
-  ) 1;
+  border: 8px double #B76E79;
+  border-radius: 1rem;
   box-shadow:
-    0 0 0 3px #91742d,
-    0 0 0 6px rgba(212, 175, 55, 0.3),
-    inset 0 0 30px rgba(0, 0, 0, 0.1),
-    4px 6px 20px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(
-    145deg,
-    #f5f0e1 0%,
-    #ede5d0 100%
-  );
+    0 0 0 3px rgba(183, 110, 121, 0.2),
+    0 8px 30px rgba(183, 110, 121, 0.15),
+    inset 0 0 20px rgba(226, 157, 164, 0.05);
+  background: linear-gradient(145deg, #FFFDD0, #FAF0E6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,17 +90,19 @@
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  border: 1px dashed rgba(183, 110, 121, 0.25);
+  border-radius: 0.75rem;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Portrait with sepia filter */
+/* ───────────────── Portrait Image ───────────────── */
 .portrait-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: sepia(0.2) contrast(1.1) brightness(1.05);
+  filter: sepia(0.1) brightness(1.05) saturate(1.1);
+  border-radius: 4px;
 }
 
 .portrait-placeholder {
@@ -124,190 +114,294 @@
   height: 100%;
 }
 
-/* ───────────────── Stationery (Typewriter Textarea) ───────────────── */
+/* ───────────────── Keepsake Output Frame ───────────────── */
+.keepsake-output-frame {
+  background: #FFFDD0;
+  padding: 20px;
+  border: 3px double #B76E79;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 4px 25px rgba(183, 110, 121, 0.12),
+    0 1px 4px rgba(183, 110, 121, 0.08);
+  width: 100%;
+  max-width: 520px;
+}
+
+.keepsake-output-inner {
+  background: #FFF8F0;
+  padding: 20px;
+  border-radius: 1rem;
+  border: 1px dashed rgba(183, 110, 121, 0.2);
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 400px;
+}
+
+/* Photobooth Strip Wrapper */
+.photobooth-strip-wrapper {
+  flex-shrink: 0;
+}
+
+.photobooth-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(
+    135deg,
+    #F5E6E8 0%,
+    #F0D4D8 50%,
+    #F5E6E8 100%
+  );
+  padding: 12px;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(183, 110, 121, 0.15);
+  box-shadow: 0 2px 10px rgba(183, 110, 121, 0.08);
+}
+
+.photobooth-frame {
+  width: 145px;
+  height: 145px;
+  border: 3px double rgba(183, 110, 121, 0.35);
+  background: linear-gradient(145deg, #FFFDD0, #FAF0E6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+}
+
+.photobooth-frame::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed rgba(183, 110, 121, 0.15);
+  border-radius: 0.25rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Letter Output */
+.keepsake-letter-output {
+  flex: 1;
+  background: #FFFDD0;
+  border-radius: 0.75rem;
+  padding: 18px;
+  min-height: 200px;
+  border: 1px dashed rgba(183, 110, 121, 0.2);
+  box-shadow: inset 0 1px 3px rgba(183, 110, 121, 0.04);
+  display: flex;
+  align-items: flex-start;
+  overflow-y: auto;
+  /* Faint lined paper effect */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(183, 110, 121, 0.08) 27px,
+    rgba(183, 110, 121, 0.08) 28px
+  );
+}
+
+.letter-output-content {
+  width: 100%;
+}
+
+.letter-output-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* ───────────────── Stationery Textarea ───────────────── */
 .stationery {
   width: 100%;
-  background-color: #fffdd0;
-  background-image:
-    repeating-linear-gradient(
-      transparent,
-      transparent 31px,
-      rgba(176, 196, 222, 0.35) 31px,
-      rgba(176, 196, 222, 0.35) 32px
-    );
+  background-color: #FFFDD0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(183, 110, 121, 0.12) 31px,
+    rgba(183, 110, 121, 0.12) 32px
+  );
   font-family: 'Special Elite', monospace;
   font-size: 15px;
-  color: #2c1810;
+  color: #5A3E47;
   line-height: 32px;
-  padding: 8px 16px;
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  border-radius: 2px;
+  padding: 10px 18px;
+  border: 2px double #B76E79;
+  border-radius: 0.75rem;
   resize: vertical;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stationery:focus {
-  border-color: #d4af37;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  border-color: #E29DA4;
+  box-shadow: 0 0 0 3px rgba(226, 157, 164, 0.15), 0 0 15px rgba(226, 157, 164, 0.1);
 }
 
 .stationery::placeholder {
-  color: rgba(44, 24, 16, 0.3);
+  color: rgba(90, 62, 71, 0.35);
   font-style: italic;
 }
 
 /* ───────────────── Stationery Input ───────────────── */
 .stationery-input {
   width: 100%;
-  background-color: #fffdd0;
+  background-color: #FFFDD0;
   font-family: 'Special Elite', monospace;
   font-size: 15px;
-  color: #2c1810;
-  padding: 10px 16px;
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  border-radius: 2px;
+  color: #5A3E47;
+  padding: 12px 18px;
+  border: 2px double #B76E79;
+  border-radius: 0.75rem;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stationery-input:focus {
-  border-color: #d4af37;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  border-color: #E29DA4;
+  box-shadow: 0 0 0 3px rgba(226, 157, 164, 0.15), 0 0 15px rgba(226, 157, 164, 0.1);
 }
 
 .stationery-input::placeholder {
-  color: rgba(44, 24, 16, 0.3);
+  color: rgba(90, 62, 71, 0.35);
   font-style: italic;
 }
 
-/* ───────────────── Regency Buttons ───────────────── */
+/* ───────────────── Cottagecore Buttons ───────────────── */
 .regency-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 12px 28px;
+  padding: 14px 32px;
   font-family: 'Playfair Display', serif;
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #fffdd0;
-  background: linear-gradient(135deg, #d4af37 0%, #91742d 100%);
-  border: 1px solid #91742d;
-  border-radius: 2px;
+  color: #FFFDD0;
+  background: linear-gradient(135deg, #E29DA4 0%, #B76E79 100%);
+  border: none;
+  border-radius: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(145, 116, 45, 0.3);
+  box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
 }
 
 .regency-btn:hover {
-  background: linear-gradient(135deg, #e6c84a 0%, #a6863a 100%);
-  box-shadow: 0 4px 16px rgba(145, 116, 45, 0.4);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #EBB0B5 0%, #C47F89 100%);
+  box-shadow: 0 6px 25px rgba(183, 110, 121, 0.4);
+  transform: translateY(-2px);
 }
 
 .regency-btn:active {
   transform: translateY(0);
-  box-shadow: 0 1px 4px rgba(145, 116, 45, 0.3);
+  box-shadow: 0 2px 8px rgba(183, 110, 121, 0.25);
 }
 
 .regency-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
   transform: none;
 }
 
 .regency-btn--outline {
   background: transparent;
-  color: #91742d;
-  border: 2px solid #d4af37;
+  color: #B76E79;
+  border: 2px solid #B76E79;
 }
 
 .regency-btn--outline:hover {
-  background: rgba(212, 175, 55, 0.1);
-  color: #91742d;
+  background: rgba(226, 157, 164, 0.1);
+  color: #B76E79;
 }
 
 .regency-btn--seal {
-  background: linear-gradient(135deg, #961216 0%, #6b0d10 100%);
-  border-color: #6b0d10;
-  box-shadow: 0 2px 8px rgba(150, 18, 22, 0.3);
+  background: linear-gradient(135deg, #8A9A5B 0%, #6B7D3E 100%);
+  box-shadow: 0 4px 15px rgba(138, 154, 91, 0.3);
 }
 
 .regency-btn--seal:hover {
-  background: linear-gradient(135deg, #b01519 0%, #7f1013 100%);
-  box-shadow: 0 4px 16px rgba(150, 18, 22, 0.4);
+  background: linear-gradient(135deg, #9AAB6B 0%, #7B8D4E 100%);
+  box-shadow: 0 6px 25px rgba(138, 154, 91, 0.4);
 }
 
-/* ───────────────── Wax Seal ───────────────── */
-.wax-seal {
-  width: 50px;
-  height: 50px;
-  background: #961216;
+/* ───────────────── Pink Wax Seal ───────────────── */
+.wax-seal,
+.pink-wax-seal {
+  width: 45px;
+  height: 45px;
+  background: #E29DA4;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow:
-    inset 2px 2px 5px rgba(255, 255, 255, 0.2),
-    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
-    2px 4px 6px rgba(0, 0, 0, 0.3);
+    inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+    2px 3px 6px rgba(0, 0, 0, 0.1);
   clip-path: polygon(
     50% 0%,
-    80% 10%,
-    100% 35%,
-    100% 70%,
-    80% 90%,
+    85% 15%,
+    100% 45%,
+    90% 80%,
     50% 100%,
-    20% 90%,
-    0% 70%,
-    0% 35%,
-    20% 10%
+    10% 80%,
+    0% 45%,
+    15% 15%
   );
+  flex-shrink: 0;
 }
 
 .wax-seal-letter {
   font-family: 'Playfair Display', serif;
-  color: #d4af37;
-  font-size: 22px;
+  color: #FFFDD0;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1;
   user-select: none;
+  text-shadow: none;
 }
 
 /* ───────────────── Ledger Form ───────────────── */
 .ledger-form {
   width: 100%;
   max-width: 42rem;
-  background: rgba(255, 253, 208, 0.5);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 4px;
-  padding: 1.5rem;
+  background: #FFFDD0;
+  border: 2px double #B76E79;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 25px rgba(183, 110, 121, 0.08);
 }
 
-/* ───────────────── Ledger Entry ───────────────── */
+/* ───────────────── Ledger Entry (Mini Letter) ───────────────── */
 .ledger-entry {
-  background: rgba(255, 253, 208, 0.4);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 4px;
-  padding: 1.25rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #FFFDD0;
+  border: 1px solid rgba(183, 110, 121, 0.2);
+  border-left: 4px double #B76E79;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(183, 110, 121, 0.06);
 }
 
 .ledger-entry:hover {
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.1);
+  border-color: rgba(183, 110, 121, 0.35);
+  box-shadow: 0 4px 20px rgba(183, 110, 121, 0.12);
+  transform: translateY(-1px);
 }
 
-/* ───────────────── Keepsake capture area ───────────────── */
+/* ───────────────── Keepsake Capture Area ───────────────── */
 .keepsake-capture-area {
   padding: 1rem;
 }
 
-/* ───────────────── ScrollReveal text ───────────────── */
+/* ───────────────── ScrollReveal ───────────────── */
 .scroll-reveal-text {
   will-change: transform, opacity;
 }
@@ -317,10 +411,46 @@
   .gold-frame {
     width: 260px;
     height: 340px;
-    border-width: 8px;
+    border-width: 6px;
   }
 
   .section-card {
     padding: 1.5rem;
+    border-radius: 1rem;
   }
+
+  .keepsake-output-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photobooth-frame {
+    width: 120px;
+    height: 120px;
+  }
+
+  .keepsake-output-frame {
+    padding: 14px;
+    border-radius: 1rem;
+  }
+
+  .ledger-form {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .ledger-entry {
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+/* ───────────────── Soft text shadow (subtle) ───────────────── */
+h1, h2, h3 {
+  text-shadow: 0 1px 2px rgba(90, 62, 71, 0.06);
+}
+
+/* Remove the aggressive black glow from everything */
+body, p, span, a, h4, h5, h6 {
+  text-shadow: none;
 }
