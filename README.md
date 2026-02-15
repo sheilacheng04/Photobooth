@@ -547,11 +547,6 @@ The application is fully responsive with **5 breakpoint tiers**:
 - [ ] **Dark Mode**: Alternative color scheme
 - [ ] **Internationalization**: Multi-language support
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ---
 
