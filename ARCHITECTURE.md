@@ -460,3 +460,6 @@ Max (≥ 1280px)
 ---
 
 **May this diagram guide your understanding of The Regency Keepsake's elegant architecture!** 🎭✨
+
+
+
