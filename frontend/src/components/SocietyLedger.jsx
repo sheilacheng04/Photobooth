@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import WaxSeal from './WaxSeal';
-import ScrollReveal from './ScrollReveal';
 
 const API_BASE = '/api/guestbook';
 
@@ -117,11 +116,11 @@ const SocietyLedger = () => {
             </button>
           </form>
 
-          {/* ScrollReveal Quote */}
+          {/* Quote */}
           <div className="mt-6 md:mt-8 px-2">
-            <ScrollReveal>
+            <h2 className="font-playfair text-xs sm:text-sm md:text-base lg:text-lg text-center leading-snug text-rose-gold/80 italic" style={{ wordSpacing: '0.3em' }}>
               All the world is made of faith, and trust, and pixie dust. The memories we seal within these pages shall endure beyond the Season.
-            </ScrollReveal>
+            </h2>
           </div>
         </div>
 
