@@ -86,7 +86,7 @@ function App() {
                   Take thy portrait &amp; pen thy sentiments
                 </p>
                 <WhistledownTypewriter 
-                  keepsakeRef={keepsakeRef} 
+                  portraitRef={portraitRef} 
                   galleryRef={galleryRef}
                   capturedImage={capturedImage}
                   letter={letter}

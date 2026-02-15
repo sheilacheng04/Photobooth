@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
 
-const WhistledownTypewriter = ({ keepsakeRef, galleryRef, capturedImage, letter, setLetter, name, setName }) => {
+const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImage, letter, setLetter, name, setName }) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const takePhoto = () => {
@@ -17,7 +17,7 @@ const WhistledownTypewriter = ({ keepsakeRef, galleryRef, capturedImage, letter,
   };
 
   const handleSeal = async () => {
-    const target = keepsakeRef?.current;
+    const target = portraitRef?.current;
     if (!target) return;
 
     setIsSaving(true);

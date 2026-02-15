@@ -2,7 +2,6 @@
   "name": "regency-photobooth",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["frontend", "api"],
   "scripts": {
     "dev:frontend": "cd frontend && npm run dev",
     "dev:api": "cd api && npm run start:dev",
