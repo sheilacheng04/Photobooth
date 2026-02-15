@@ -5,9 +5,36 @@
 .landing-page {
   min-height: 100vh;
   background-color: #FFF5F7;
-  background-image: url('https://i.pinimg.com/736x/a0/ac/d4/a0acd4128cb0fc042f29cde042e7db38.jpg');
-  background-size: cover;
-  background-position: center;
+  background-image:
+    /* Vertical stripes with reduced opacity */
+    repeating-linear-gradient(
+      90deg,
+      rgba(232, 180, 192, 0.5) 0px,
+      rgba(232, 180, 192, 0.5) 20px,
+      rgba(217, 146, 159, 0.5) 20px,
+      rgba(217, 146, 159, 0.5) 40px,
+      rgba(240, 212, 220, 0.5) 40px,
+      rgba(240, 212, 220, 0.5) 60px,
+      rgba(226, 157, 164, 0.5) 60px,
+      rgba(226, 157, 164, 0.5) 80px
+    ),
+    /* Horizontal stripes */
+    repeating-linear-gradient(
+      0deg,
+      #E8B4C0 0px,
+      #E8B4C0 20px,
+      #D9929F 20px,
+      #D9929F 40px,
+      #F0D4DC 40px,
+      #F0D4DC 60px,
+      #E29DA4 60px,
+      #E29DA4 80px
+    ),
+    /* Subtle radial accents */
+    radial-gradient(circle at 20% 50%, rgba(226, 157, 164, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(183, 110, 121, 0.02) 0%, transparent 50%);
+  background-size: 80px 100%, 100% 80px, 100% 100%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, 0 0;
   background-attachment: fixed;
   position: relative;
   overflow: hidden;

@@ -61,6 +61,10 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
     const context = canvasRef.current.getContext('2d');
     canvasRef.current.width = activeVideo.videoWidth;
     canvasRef.current.height = activeVideo.videoHeight;
+    
+    // Mirror the image horizontally
+    context.translate(canvasRef.current.width, 0);
+    context.scale(-1, 1);
     context.drawImage(activeVideo, 0, 0);
 
     const photoData = canvasRef.current.toDataURL('image/jpeg', 0.95);

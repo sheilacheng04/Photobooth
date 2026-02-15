@@ -76,11 +76,11 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
       <div className="w-full flex flex-col items-center gap-2">
         {allPhotosTaken ? (
           <button onClick={handleRetake} className="regency-btn w-full max-w-xl text-base py-3">
-            🌸 Retake All Photos 🌸
+            ❀ Retake All Photos ❀
           </button>
         ) : (
           <button onClick={takePhoto} className="regency-btn w-full max-w-xl text-base py-3">
-            📸 Take Photo ({photosTaken + 1}/3)
+            𔓘 Take Photo ({photosTaken + 1}/3)
           </button>
         )}
         {photosTaken > 0 && !allPhotosTaken && (
@@ -131,7 +131,7 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
               Sealing...
             </span>
           ) : (
-            '🌿 Seal with Love 🌿'
+            '✿ Seal with Love ✿'
           )}
         </button>
         {/* Change Frame Button */}
@@ -139,7 +139,7 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
           onClick={handleChangeFrame}
           className="regency-btn w-full text-base py-3"
         >
-          🎨 Change Frame
+          ❁ Change Frame
         </button>
       </div>
     </section>

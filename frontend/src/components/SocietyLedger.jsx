@@ -113,7 +113,7 @@ const SocietyLedger = () => {
               />
             </div>
             <button type="submit" disabled={submitting} className="regency-btn w-full">
-              {submitting ? 'Inscribing...' : '✿ Sign the Ledger'}
+              {submitting ? 'Inscribing...' : '❀ Sign the Ledger'}
             </button>
           </form>
 

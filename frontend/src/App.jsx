@@ -36,7 +36,7 @@ function App() {
           The Keepsake Corner
         </h1>
         <div className="gilded-rule mt-6">
-          <span>🌸</span>
+          <span>❀</span>
         </div>
         <p className="font-body text-sm text-aged-rose mt-4 max-w-lg mx-auto font-light">
           Capture thy portrait, pen thy sentiments, seal thy memories
@@ -47,7 +47,7 @@ function App() {
       <main className="max-w-6xl mx-auto px-4 pb-20">
         <div className="mb-6 text-center">
           <h2 className="font-playfair text-2xl md:text-3xl font-bold text-rose-gold tracking-wide">
-            ✿ The Creation Desk ✿
+            ❀ The Creation Desk ❀
           </h2>
           <p className="font-body text-sm text-aged-rose mt-2 font-light">
             Compose thy keepsake with portrait &amp; letter
@@ -101,13 +101,13 @@ function App() {
 
         {/* ── Vine Divider ── */}
         <div className="gilded-rule my-14">
-          <span>🌿</span>
+          <span>✿</span>
         </div>
 
         {/* ═══════════════ SECTION 2: THE KEEPSAKE LATTICE ═══════════════ */}
         <div className="mb-6 text-center">
           <h2 className="font-playfair text-2xl md:text-3xl font-bold text-rose-gold tracking-wide">
-            ✿ The Keepsake Lattice ✿
+            ❀ The Keepsake Lattice ❀
           </h2>
           <p className="font-body text-sm text-aged-rose mt-2 font-light">
             Leave a note &amp; view entries from distinguished guests

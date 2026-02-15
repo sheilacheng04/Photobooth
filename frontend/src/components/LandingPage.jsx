@@ -13,7 +13,7 @@ function LandingPage({ onEnter }) {
       <div className={`landing-content ${isVisible ? 'visible' : ''}`}>
         {/* Ornate oval frame */}
         <div className="ornate-frame">
-          <div className="frame-top-ornament">🎀</div>
+          <div className="frame-top-ornament">𝜗ৎ</div>
           
           <div className="invitation-text">
             <p className="invitation-subtitle">Welcome to</p>
@@ -29,7 +29,7 @@ function LandingPage({ onEnter }) {
               onClick={onEnter}
             >
               <span className="button-text">Enter the Garden</span>
-              <span className="button-decoration">🌸</span>
+              <span className="button-decoration">❀</span>
             </button>
           </div>
         </div>
