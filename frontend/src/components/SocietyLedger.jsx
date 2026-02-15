@@ -119,7 +119,7 @@ const SocietyLedger = () => {
           {/* Quote */}
           <div className="mt-6 md:mt-8 px-2">
             <h2 className="font-playfair text-xs sm:text-sm md:text-base lg:text-lg text-center leading-snug text-rose-gold/80 italic" style={{ wordSpacing: '0.3em' }}>
-              Error: Function Runtimes must have a valid version, for example `now-php@1.0.0`. world is made of faith, and trust, and pixie dust. The memories we seal within these pages shall endure beyond the Season.
+              The world is made of faith, and trust, and pixie dust. The memories we seal within these pages shall endure beyond the Season.
             </h2>
           </div>
         </div>
