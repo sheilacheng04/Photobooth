@@ -10,8 +10,8 @@
     }
   },
   "routes": [
-    { "src": "/api/(.*)", "destination": "/api/vercel/index.ts" },
+    { "src": "/api/(.*)", "dest": "/api/vercel/index.ts" },
     { "handle": "filesystem" },
-    { "src": "/(.*)", "destination": "/index.html" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
