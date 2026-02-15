@@ -61,7 +61,7 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
   };
 
   return (
-    <section className="flex flex-col items-center w-full gap-5">
+    <section className="flex flex-col items-center w-full gap-3 sm:gap-5">
       {/* Pass selected frame to the output via a hidden mechanism */}
       {selectedFrame && (
         <style>{`
@@ -75,25 +75,25 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
       {/* TOP: Take Photo / Retake Button */}
       <div className="w-full flex flex-col items-center gap-2">
         {allPhotosTaken ? (
-          <button onClick={handleRetake} className="regency-btn w-full max-w-xl text-base py-3">
+          <button onClick={handleRetake} className="regency-btn w-full max-w-xl text-sm md:text-base py-2.5 md:py-3">
             ❀ Retake All Photos ❀
           </button>
         ) : (
-          <button onClick={takePhoto} className="regency-btn w-full max-w-xl text-base py-3">
+          <button onClick={takePhoto} className="regency-btn w-full max-w-xl text-sm md:text-base py-2.5 md:py-3">
             𔓘 Take Photo ({photosTaken + 1}/3)
           </button>
         )}
         {photosTaken > 0 && !allPhotosTaken && (
-          <p className="font-body text-xs text-aged-rose font-light italic">
+          <p className="font-body text-[10px] sm:text-xs text-aged-rose font-light italic">
             {3 - photosTaken} photo{3 - photosTaken > 1 ? 's' : ''} remaining
           </p>
         )}
       </div>
 
       {/* MIDDLE: Name + Letter Input */}
-      <div className="w-full max-w-xl flex flex-col gap-4">
+      <div className="w-full max-w-xl flex flex-col gap-3 sm:gap-4">
         <div>
-          <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+          <label className="block font-playfair text-xs sm:text-sm text-rose-gold mb-1 sm:mb-1.5 font-semibold">
             Thy Name
           </label>
           <input
@@ -105,22 +105,22 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
           />
         </div>
         <div>
-          <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+          <label className="block font-playfair text-xs sm:text-sm text-rose-gold mb-1 sm:mb-1.5 font-semibold">
             Thy Letter
           </label>
           <textarea
             value={letter}
             onChange={(e) => setLetter(e.target.value)}
             placeholder="Dearest reader, it has come to my attention that..."
-            rows={8}
-            className="stationery"
+            rows={5}
+            className="stationery sm-rows-8"
           />
         </div>
         {/* Seal for Delivery Button */}
         <button
           onClick={handleSeal}
           disabled={isSaving}
-          className="regency-btn regency-btn--seal w-full text-base py-3"
+          className="regency-btn regency-btn--seal w-full text-sm md:text-base py-2.5 md:py-3"
         >
           {isSaving ? (
             <span className="flex items-center justify-center gap-2">
@@ -137,7 +137,7 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
         {/* Change Frame Button */}
         <button
           onClick={handleChangeFrame}
-          className="regency-btn w-full text-base py-3"
+          className="regency-btn w-full text-sm md:text-base py-2.5 md:py-3"
         >
           ❁ Change Frame
         </button>

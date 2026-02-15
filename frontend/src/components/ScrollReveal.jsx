@@ -54,8 +54,8 @@ const ScrollReveal = ({
   return (
     <h2
       ref={containerRef}
-      className="scroll-reveal-text font-playfair text-lg md:text-2xl text-center leading-relaxed text-rose-gold/80 italic"
-      style={{ wordSpacing: '0.6em' }}
+      className="scroll-reveal-text font-playfair text-sm sm:text-base md:text-lg lg:text-2xl text-center leading-relaxed text-rose-gold/80 italic"
+      style={{ wordSpacing: '0.4em' }}
     >
       {splitText}
     </h2>

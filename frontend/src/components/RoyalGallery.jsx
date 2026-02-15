@@ -135,7 +135,7 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
       )}
 
       {/* Output Frame — Photobooth strip + letter display */}
-      <div className="keepsake-output-frame" ref={portraitRef}>
+      <div className="keepsake-output-frame mx-auto" ref={portraitRef}>
         <div className="keepsake-output-inner">
           {/* Photobooth Strip */}
           <div className="photobooth-strip-wrapper">
@@ -159,7 +159,7 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
                   ) : (
                     <div className="portrait-placeholder">
                       <svg
-                        className="w-8 h-8 text-rose-gold/30 mb-1"
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-rose-gold/30 mb-1"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -171,7 +171,7 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
                           d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                         />
                       </svg>
-                      <span className="font-body text-rose-gold/40 text-[10px]">
+                      <span className="font-body text-rose-gold/40 text-[8px] sm:text-[10px]">
                         Photo {index + 1}
                       </span>
                     </div>
@@ -186,19 +186,19 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
             {letterText || letterName ? (
               <div className="letter-output-content">
                 {letterName && (
-                  <p className="font-signature text-lg text-rose-gold mb-2 border-b border-rose-gold/20 pb-1">
+                  <p className="font-signature text-base sm:text-lg text-rose-gold mb-2 border-b border-rose-gold/20 pb-1">
                     {letterName}
                   </p>
                 )}
                 {letterText && (
-                  <p className="font-typewriter text-xs text-rose-gold/80 leading-relaxed whitespace-pre-wrap">
+                  <p className="font-typewriter text-[10px] sm:text-xs text-rose-gold/80 leading-relaxed whitespace-pre-wrap break-words">
                     {letterText}
                   </p>
                 )}
               </div>
             ) : (
               <div className="letter-output-placeholder">
-                <p className="font-body text-xs text-rose-gold/30 italic text-center">
+                <p className="font-body text-[10px] sm:text-xs text-rose-gold/30 italic text-center">
                   Thy letter shall<br />appear here...
                 </p>
               </div>

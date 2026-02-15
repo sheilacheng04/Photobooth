@@ -61,20 +61,20 @@ const SocietyLedger = () => {
   return (
     <section>
       {/* Two-column grid: Form (left) + Entries (right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
         {/* LEFT COLUMN: The Guestbook Form */}
         <div>
-          <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1">
+          <h3 className="font-playfair text-lg md:text-xl font-bold text-rose-gold mb-1">
             Leave a Note
           </h3>
-          <p className="font-body text-xs text-aged-rose mb-5 font-light">
+          <p className="font-body text-[10px] sm:text-xs text-aged-rose mb-4 md:mb-5 font-light">
             Inscribe thy name upon the registry
           </p>
 
           <form onSubmit={handleSubmit} className="ledger-form">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-3 md:mb-4">
               <div>
-                <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+                <label className="block font-playfair text-xs sm:text-sm text-rose-gold mb-1.5 font-semibold">
                   Thy Name <span className="text-deep-rose">*</span>
                 </label>
                 <input
@@ -87,7 +87,7 @@ const SocietyLedger = () => {
                 />
               </div>
               <div>
-                <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+                <label className="block font-playfair text-xs sm:text-sm text-rose-gold mb-1.5 font-semibold">
                   Title / Honorific
                 </label>
                 <input
@@ -99,8 +99,8 @@ const SocietyLedger = () => {
                 />
               </div>
             </div>
-            <div className="mb-5">
-              <label className="block font-playfair text-sm text-rose-gold mb-1.5 font-semibold">
+            <div className="mb-4 md:mb-5">
+              <label className="block font-playfair text-xs sm:text-sm text-rose-gold mb-1.5 font-semibold">
                 Message <span className="text-deep-rose">*</span>
               </label>
               <textarea
@@ -108,17 +108,17 @@ const SocietyLedger = () => {
                 value={formData.message}
                 onChange={(e) => setFormData((f) => ({ ...f, message: e.target.value }))}
                 placeholder="What a splendid evening of refinement..."
-                rows={4}
+                rows={3}
                 className="stationery"
               />
             </div>
-            <button type="submit" disabled={submitting} className="regency-btn w-full">
+            <button type="submit" disabled={submitting} className="regency-btn w-full text-sm md:text-base py-2.5 md:py-3">
               {submitting ? 'Inscribing...' : '❀ Sign the Ledger'}
             </button>
           </form>
 
           {/* ScrollReveal Quote */}
-          <div className="mt-8 px-2">
+          <div className="mt-6 md:mt-8 px-2">
             <ScrollReveal>
               All the world is made of faith, and trust, and pixie dust. The memories we seal within these pages shall endure beyond the Season.
             </ScrollReveal>
@@ -127,43 +127,43 @@ const SocietyLedger = () => {
 
         {/* RIGHT COLUMN: Live Feedbacks */}
         <div>
-          <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1">
+          <h3 className="font-playfair text-lg md:text-xl font-bold text-rose-gold mb-1">
             The Guest Ledger
           </h3>
-          <p className="font-body text-xs text-aged-rose mb-5 font-light">
+          <p className="font-body text-[10px] sm:text-xs text-aged-rose mb-4 md:mb-5 font-light">
             Notes from distinguished visitors
           </p>
 
-          <div className="max-h-[600px] overflow-y-auto pr-2 space-y-4" style={{ scrollbarWidth: 'thin', scrollbarColor: '#E29DA4 #FFF5F7' }}>
+          <div className="max-h-[500px] md:max-h-[600px] overflow-y-auto pr-2 space-y-3 md:space-y-4" style={{ scrollbarWidth: 'thin', scrollbarColor: '#E29DA4 #FFF5F7' }}>
             {loading ? (
-              <p className="text-center font-body text-aged-rose/60 py-8">
+              <p className="text-center font-body text-[11px] sm:text-xs md:text-sm text-aged-rose/60 py-6 md:py-8">
                 Consulting the ledger...
               </p>
             ) : entries.length === 0 ? (
-              <p className="text-center font-body text-aged-rose/60 py-8 italic">
+              <p className="text-center font-body text-[11px] sm:text-xs md:text-sm text-aged-rose/60 py-6 md:py-8 italic">
                 The ledger awaits its first distinguished guest.
               </p>
             ) : (
-              <ul className="space-y-4">
+              <ul className="space-y-3 md:space-y-4">
                 {entries.map((entry) => (
                   <li key={entry.id} className="ledger-entry">
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-2 md:gap-3">
                       <WaxSeal letter={entry.name?.charAt(0)?.toUpperCase() || 'K'} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline gap-2 flex-wrap">
-                          <span className="font-signature text-xl text-deep-rose">
+                          <span className="font-signature text-lg md:text-xl text-deep-rose">
                             {entry.name}
                           </span>
                           {entry.title && (
-                            <span className="font-playfair text-xs text-rose-gold/70 italic">
+                            <span className="font-playfair text-[10px] sm:text-xs text-rose-gold/70 italic">
                               — {entry.title}
                             </span>
                           )}
                         </div>
-                        <p className="font-body text-sm text-rose-gold/80 mt-1.5 leading-relaxed font-light">
+                        <p className="font-body text-xs sm:text-sm text-rose-gold/80 mt-1 md:mt-1.5 leading-relaxed font-light">
                           {entry.message}
                         </p>
-                        <time className="block font-body text-xs text-aged-rose/40 mt-2 font-light">
+                        <time className="block font-body text-[10px] sm:text-xs text-aged-rose/40 mt-1.5 md:mt-2 font-light">
                           {formatDate(entry.created_at)}
                         </time>
                       </div>

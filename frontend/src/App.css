@@ -70,7 +70,8 @@
 
 /* ───────────────── Portrait Frame ───────────────── */
 .gold-frame {
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 400px;
   border: 8px double #B76E79;
   border-radius: 1rem;
@@ -130,6 +131,7 @@ video.portrait-image {
     0 1px 4px rgba(183, 110, 121, 0.08);
   width: 100%;
   max-width: 520px;
+  margin: 0 auto;
 }
 
 .keepsake-output-inner {
@@ -141,6 +143,7 @@ video.portrait-image {
   gap: 16px;
   align-items: stretch;
   min-height: 400px;
+  overflow: hidden;
 }
 
 /* Photobooth Strip Wrapper */
@@ -176,6 +179,7 @@ video.portrait-image {
   position: relative;
   flex-shrink: 0;
   border-radius: 0.5rem;
+  aspect-ratio: 1;
 }
 
 .photobooth-frame::before {
@@ -246,6 +250,13 @@ video.portrait-image {
 .stationery:focus {
   border-color: #E29DA4;
   box-shadow: 0 0 0 3px rgba(226, 157, 164, 0.15), 0 0 15px rgba(226, 157, 164, 0.1);
+}
+
+/* Expand textarea on larger screens */
+@media (min-width: 640px) {
+  .stationery.sm-rows-8 {
+    min-height: 256px;  /* ≈ 8 rows × 32px line-height */
+  }
 }
 
 .stationery::placeholder {
@@ -405,6 +416,8 @@ video.portrait-image {
 .keepsake-capture-area {
   padding: 1rem;
   padding-bottom: 0rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* ───────────────── ScrollReveal ───────────────── */
@@ -412,42 +425,335 @@ video.portrait-image {
   will-change: transform, opacity;
 }
 
-/* ───────────────── Responsive Tweaks ───────────────── */
-@media (max-width: 640px) {
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Large tablet / Small desktop (max-width: 1024px) ── */
+@media (max-width: 1024px) {
   .gold-frame {
-    width: 260px;
+    max-width: 280px;
+    height: 360px;
+  }
+
+  .keepsake-output-frame {
+    max-width: 460px;
+  }
+
+  .photobooth-frame {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* ── Tablet / Mobile landscape (max-width: 768px) ── */
+@media (max-width: 768px) {
+  .gold-frame {
+    max-width: 260px;
     height: 340px;
     border-width: 6px;
   }
 
   .section-card {
-    padding: 1.5rem;
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .section-card::before,
+  .section-card::after {
+    font-size: 14px;
+  }
+
+  .keepsake-output-frame {
+    padding: 14px;
+    max-width: 100%;
     border-radius: 1rem;
   }
 
   .keepsake-output-inner {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    padding: 14px;
+    min-height: auto;
+  }
+
+  .photobooth-strip-wrapper {
+    width: 100%;
+  }
+
+  .photobooth-strip {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
   }
 
   .photobooth-frame {
-    width: 120px;
-    height: 120px;
+    width: 0;
+    height: auto;
+    flex: 1 1 0;
+    max-width: 120px;
   }
 
-  .keepsake-output-frame {
+  .keepsake-letter-output {
+    min-height: 120px;
     padding: 14px;
-    border-radius: 1rem;
+    width: 100%;
   }
 
   .ledger-form {
     padding: 1.25rem;
     border-radius: 1rem;
+    max-width: 100%;
   }
 
   .ledger-entry {
     border-radius: 0.75rem;
     padding: 1rem;
+  }
+
+  .regency-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .stationery,
+  .stationery-input {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .keepsake-capture-area {
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  .gilded-rule {
+    max-width: 90%;
+  }
+}
+
+/* ── Mobile portrait (max-width: 640px) ── */
+@media (max-width: 640px) {
+  .gold-frame {
+    max-width: 220px;
+    height: 280px;
+    border-width: 5px;
+  }
+
+  .section-card {
+    padding: 1rem;
+    border-radius: 0.875rem;
+  }
+
+  .keepsake-output-frame {
+    padding: 10px;
+  }
+
+  .keepsake-output-inner {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .photobooth-strip {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .photobooth-frame {
+    max-width: 100px;
+    border-width: 2px;
+  }
+
+  .keepsake-letter-output {
+    padding: 12px;
+    font-size: 13px;
+    min-height: 100px;
+  }
+
+  .regency-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    gap: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .wax-seal,
+  .pink-wax-seal {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wax-seal-letter {
+    font-size: 15px;
+  }
+
+  .keepsake-capture-area {
+    padding: 0.25rem;
+    padding-bottom: 0;
+  }
+}
+
+/* ── Small mobile (max-width: 480px) ── */
+@media (max-width: 480px) {
+  .gold-frame {
+    max-width: 200px;
+    height: 260px;
+    border-width: 4px;
+  }
+
+  .section-card {
+    padding: 0.875rem;
+    border-radius: 0.75rem;
+  }
+
+  .section-card::before,
+  .section-card::after {
+    font-size: 12px;
+    top: 8px;
+    left: 10px;
+  }
+
+  .section-card::after {
+    bottom: 8px;
+    right: 10px;
+    top: auto;
+    left: auto;
+  }
+
+  .keepsake-output-frame {
+    padding: 8px;
+    border-width: 2px;
+  }
+
+  .keepsake-output-inner {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .photobooth-strip {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .photobooth-frame {
+    max-width: 85px;
+  }
+
+  .keepsake-letter-output {
+    padding: 10px;
+    font-size: 12px;
+    min-height: 80px;
+  }
+
+  .ledger-form {
+    padding: 0.875rem;
+    border-radius: 0.75rem;
+  }
+
+  .ledger-entry {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .regency-btn {
+    padding: 10px 14px;
+    font-size: 11px;
+  }
+
+  .stationery,
+  .stationery-input {
+    font-size: 13px;
+    padding: 8px 12px;
+    line-height: 28px;
+  }
+
+  .wax-seal,
+  .pink-wax-seal {
+    width: 34px;
+    height: 34px;
+  }
+
+  .wax-seal-letter {
+    font-size: 13px;
+  }
+
+  .gilded-rule {
+    max-width: 100%;
+  }
+
+  .gilded-rule span {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+}
+
+/* ── Extra-small mobile (max-width: 360px) ── */
+@media (max-width: 360px) {
+  .gold-frame {
+    max-width: 180px;
+    height: 230px;
+    border-width: 3px;
+  }
+
+  .section-card {
+    padding: 0.75rem;
+  }
+
+  .keepsake-output-frame {
+    padding: 6px;
+  }
+
+  .keepsake-output-inner {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .photobooth-frame {
+    max-width: 70px;
+  }
+
+  .keepsake-letter-output {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .regency-btn {
+    padding: 8px 12px;
+    font-size: 10px;
+    gap: 0.25rem;
+  }
+
+  .stationery,
+  .stationery-input {
+    font-size: 12px;
+    padding: 6px 10px;
+    line-height: 26px;
+  }
+
+  .ledger-form {
+    padding: 0.75rem;
+  }
+
+  .ledger-entry {
+    padding: 0.625rem;
+  }
+
+  .wax-seal,
+  .pink-wax-seal {
+    width: 30px;
+    height: 30px;
+  }
+
+  .wax-seal-letter {
+    font-size: 12px;
+  }
+
+  .gilded-rule span {
+    font-size: 14px;
+    padding: 0 8px;
   }
 }
 

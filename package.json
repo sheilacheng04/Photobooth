@@ -1,13 +1,14 @@
 {
-  "name": "regency-photobooth",
+  "name": "the-keepsake-corner",
   "version": "1.0.0",
   "private": true,
+  "description": "A cottagecore digital photobooth and guestbook application",
   "scripts": {
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:api": "cd api && npm run start:dev",
+    "dev:backend": "cd backend && npm run start:dev",
     "build:frontend": "cd frontend && npm run build",
-    "build:api": "cd api && npm run build",
-    "install:all": "cd frontend && npm install && cd ../api && npm install"
+    "build:backend": "cd backend && npm run build",
+    "install:all": "cd frontend && npm install && cd ../backend && npm install"
   },
   "dependencies": {
     "ogl": "^1.0.11"

@@ -47,6 +47,8 @@
   padding: 24px;
   margin: 16px;
   border-radius: 1.5rem;
+  /* Prevent overflow */
+  max-width: calc(100vw - 32px);
 }
 
 /* Lace texture overlay */
@@ -84,6 +86,8 @@
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease-out;
+  width: 100%;
+  max-width: 650px;
 }
 
 .landing-content.visible {
@@ -100,7 +104,7 @@
   border-radius: 50% 50% 55% 45% / 60% 50% 50% 40%;
   padding: 6rem 6.5rem 5.5rem 6.5rem;
   max-width: 600px;
-  min-width: 520px;
+  width: 100%;
   box-shadow:
     0 0 0 8px rgba(183, 110, 121, 0.08),
     0 15px 50px rgba(183, 110, 121, 0.12),
@@ -246,47 +250,133 @@
 /* ═══════════════ RESPONSIVE ═══════════════ */
 
 @media (max-width: 768px) {
+  .landing-page {
+    margin: 12px;
+    padding: 18px;
+  }
+
+  .landing-content {
+    padding: 1.5rem;
+  }
+
   .ornate-frame {
-    padding: 3rem 2.5rem;
-    max-width: 400px;
-    min-width: 340px;
+    padding: 4rem 3rem 3.5rem 3rem;
+    max-width: 420px;
   }
 
   .invitation-title-coquette {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   .invitation-title-main {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+  }
+
+  .invitation-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+  }
+
+  .enter-button {
+    padding: 12px 30px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .landing-page {
     margin: 8px;
-    padding: 16px;
+    padding: 12px;
+    border-radius: 1rem;
+  }
+
+  .landing-content {
+    padding: 1rem;
   }
 
   .ornate-frame {
-    padding: 2.5rem 1.75rem;
+    padding: 3rem 2rem 2.5rem 2rem;
     max-width: 300px;
-    min-width: 270px;
+    border-radius: 50% 50% 55% 45% / 55% 50% 50% 45%;
   }
 
   .invitation-title-coquette {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    margin: 0.15rem 0 1.25rem 0;
   }
 
   .invitation-title-main {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+  }
+
+  .invitation-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+
+  .invitation-presenter {
+    font-size: 0.75rem;
+    margin-top: 1rem;
   }
 
   .frame-top-ornament {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .enter-button {
-    padding: 12px 28px;
+    padding: 11px 24px;
     font-size: 12px;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .button-decoration {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-page {
+    margin: 6px;
+    padding: 10px;
+  }
+
+  .landing-content {
+    padding: 0.75rem;
+  }
+
+  .ornate-frame {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    max-width: 260px;
+  }
+
+  .invitation-title-coquette {
+    font-size: 1.8rem;
+    margin: 0.1rem 0 1rem 0;
+  }
+
+  .invitation-title-main {
+    font-size: 1rem;
+  }
+
+  .invitation-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+  }
+
+  .invitation-presenter {
+    font-size: 0.65rem;
+  }
+
+  .frame-top-ornament {
+    font-size: 18px;
+    top: 6%;
+  }
+
+  .enter-button {
+    padding: 10px 20px;
+    font-size: 11px;
+    gap: 0.4rem;
+    margin-top: 1rem;
   }
 }
