@@ -2,7 +2,7 @@
   "buildCommand": "npm run install:all && npm run build:api && npm run build:frontend",
   "outputDirectory": "frontend/dist",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/dist/vercel/index.js" },
+    { "source": "/api/(.*)", "destination": "/api/dist/main.js" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
