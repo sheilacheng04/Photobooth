@@ -2,6 +2,7 @@
  * Vercel Serverless Function entry point for the NestJS API.
  * This file adapts the NestJS app to run as a serverless function.
  */
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../src/app.module';
 import { ValidationPipe } from '@nestjs/common';
