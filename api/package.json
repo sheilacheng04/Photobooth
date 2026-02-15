@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc src/main.ts src/app.module.ts src/guestbook/guestbook.module.ts src/guestbook/guestbook.service.ts src/guestbook/guestbook.controller.ts src/guestbook/dto/create-entry.dto.ts src/supabase/supabase.module.ts src/supabase/supabase.service.ts vercel/index.ts --experimentalDecorators --emitDecoratorMetadata --skipLibCheck --module commonjs --target ES2021 --declaration --removeComments --sourceMap --outDir dist",
+    "build": "tsc",
     "start": "nest start",
     "start:dev": "npm run build && node dist/main.js",
     "start:prod": "node dist/main"
