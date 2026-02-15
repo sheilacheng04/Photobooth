@@ -3,6 +3,7 @@ import RoyalGallery from './components/RoyalGallery';
 import WhistledownTypewriter from './components/WhistledownTypewriter';
 import SocietyLedger from './components/SocietyLedger';
 import LandingPage from './components/LandingPage';
+import Grainient from './components/Grainient';
 import './App.css';
 
 function App() {
@@ -26,7 +27,37 @@ function App() {
   }
 
   return (
-    <div className="parchment-bg min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Fixed Grainient background */}
+      <div className="fixed inset-0 z-0">
+        <Grainient
+          color1="#e4c4ca"
+          color2="#e6a7b2"
+          color3="#edb6bf"
+          timeSpeed={0.25}
+          colorBalance={0}
+          warpStrength={1}
+          warpFrequency={5}
+          warpSpeed={2}
+          warpAmplitude={50}
+          blendAngle={0}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={1}
+          grainAmount={0.03}
+          grainScale={1.8}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
+
+      {/* Main content above background */}
+      <div className="relative z-10">
       {/* ═══════════════ HEADER ═══════════════ */}
       <header className="pt-14 pb-10 text-center px-4">
         <p className="font-body text-xs tracking-[0.4em] text-rose-gold uppercase mb-3 font-medium">
@@ -128,6 +159,7 @@ function App() {
           A DIGITAL KEEPSAKE &middot; ✿
         </p>
       </footer>
+      </div>
     </div>
   );
 }

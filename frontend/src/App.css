@@ -386,13 +386,13 @@ video.portrait-image {
 
 /* ───────────────── Ledger Entry (Mini Letter) ───────────────── */
 .ledger-entry {
-  background: #FFFDD0;
-  border: 1px solid rgba(183, 110, 121, 0.2);
+  background: #FAF5F0;
+  border: 1px solid rgba(183, 110, 121, 0.3);
   border-left: 4px double #B76E79;
   border-radius: 1rem;
   padding: 1.25rem 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(183, 110, 121, 0.06);
+  box-shadow: 0 2px 10px rgba(183, 110, 121, 0.08);
 }
 
 .ledger-entry:hover {
