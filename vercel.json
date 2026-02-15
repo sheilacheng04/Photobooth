@@ -1,13 +1,8 @@
 {
   "buildCommand": "npm run install:all && npm run build:api && npm run build:frontend",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "api/dist/vercel/index.js": {
-      "runtime": "@vercel/node@3.0.0"
-    }
-  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/dist/vercel" },
+    { "source": "/api/(.*)", "destination": "/api/dist/vercel/index.js" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
