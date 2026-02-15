@@ -1,16 +1,13 @@
-/**
- * Vercel Serverless Function entry point for the NestJS API.
- * This file adapts the NestJS app to run as a serverless function.
- */
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../app.module';
+import { AppModule } from './src/app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const server = express();
-let app;
+let app: any;
 
 async function bootstrap() {
   if (!app) {
@@ -24,7 +21,7 @@ async function bootstrap() {
   return server;
 }
 
-export default async (req, res) => {
+export default async (req: VercelRequest, res: VercelResponse) => {
   const instance = await bootstrap();
   return instance(req, res);
 };

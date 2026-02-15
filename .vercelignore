@@ -1,9 +1,0 @@
-.git
-.env
-.env.local
-frontend/src
-api/src
-api/vercel/**/*.ts
-api/test.ts
-**/*.ts
-!api/dist/**
