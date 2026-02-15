@@ -29,20 +29,6 @@ const ScrollReveal = ({
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        el,
-        { rotate: baseRotation },
-        {
-          rotate: 0,
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            end: 'bottom 20%',
-            scrub: true,
-          },
-        }
-      );
-
-      gsap.fromTo(
         wordElements,
         {
           opacity: baseOpacity,
@@ -51,11 +37,11 @@ const ScrollReveal = ({
         {
           opacity: 1,
           filter: 'blur(0px)',
-          stagger: 0.05,
+          stagger: 0.02,
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
-            end: 'bottom 20%',
+            end: 'top 65%',
             scrub: true,
           },
         }

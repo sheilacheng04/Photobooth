@@ -120,7 +120,7 @@ const SocietyLedger = () => {
           {/* ScrollReveal Quote */}
           <div className="mt-8 px-2">
             <ScrollReveal>
-              All the world is made of faith, and trust, and pixie dust — and the memories we seal within these pages shall endure beyond the Season.
+              All the world is made of faith, and trust, and pixie dust. The memories we seal within these pages shall endure beyond the Season.
             </ScrollReveal>
           </div>
         </div>

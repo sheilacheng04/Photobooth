@@ -1,11 +1,23 @@
-import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle, useCallback } from 'react';
 
-const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCapture, letterName = '', letterText = '' }, ref) => {
+const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, null], onImageCapture, letterName = '', letterText = '' }, ref) => {
   const [cameraActive, setCameraActive] = useState(false);
   const [error, setError] = useState(null);
-  const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
+  const videoRefs = useRef([null, null, null]);
+
+  // How many photos have been taken so far
+  const photosTaken = capturedImages.filter(img => img !== null).length;
+
+  const assignStreamToVideos = useCallback(() => {
+    if (!streamRef.current) return;
+    videoRefs.current.forEach((video) => {
+      if (video && !video.srcObject) {
+        video.srcObject = streamRef.current;
+      }
+    });
+  }, []);
 
   const startCamera = async () => {
     try {
@@ -17,12 +29,11 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCap
           height: { ideal: 480 }
         }
       });
-      
+
       streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
       setCameraActive(true);
+      // Give React a tick to render the video elements, then attach the stream
+      setTimeout(() => assignStreamToVideos(), 50);
     } catch (err) {
       setError('Unable to access camera. Please check permissions.');
       console.error('Camera error:', err);
@@ -32,38 +43,55 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCap
   const stopCamera = () => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current = null;
     }
     setCameraActive(false);
   };
 
   const takePhoto = () => {
     if (!cameraActive) {
-      // Auto-start camera first if not active
-      startCamera().then(() => {
-        // Will need to take photo after camera starts
-      });
+      startCamera();
       return;
     }
-    if (videoRef.current && canvasRef.current) {
-      const context = canvasRef.current.getContext('2d');
-      canvasRef.current.width = videoRef.current.videoWidth;
-      canvasRef.current.height = videoRef.current.videoHeight;
-      context.drawImage(videoRef.current, 0, 0);
-      
-      const photoData = canvasRef.current.toDataURL('image/jpeg', 0.95);
-      if (onImageCapture) {
-        onImageCapture(photoData);
-      }
+
+    // Find the first active video element to capture from
+    const activeVideo = videoRefs.current.find(v => v && v.srcObject && v.readyState >= 2);
+    if (!activeVideo || !canvasRef.current) return;
+
+    const context = canvasRef.current.getContext('2d');
+    canvasRef.current.width = activeVideo.videoWidth;
+    canvasRef.current.height = activeVideo.videoHeight;
+    context.drawImage(activeVideo, 0, 0);
+
+    const photoData = canvasRef.current.toDataURL('image/jpeg', 0.95);
+    const newImages = [...capturedImages];
+    newImages[photosTaken] = photoData;
+
+    if (onImageCapture) {
+      onImageCapture(newImages);
+    }
+
+    // If all 3 photos are now taken, stop the camera
+    if (photosTaken + 1 >= 3) {
       stopCamera();
     }
   };
 
   const handleRetake = () => {
     if (onImageCapture) {
-      onImageCapture(null);
+      onImageCapture([null, null, null]);
     }
     startCamera();
   };
+
+  // Reassign stream whenever new video elements render (after a photo is taken)
+  useEffect(() => {
+    if (cameraActive) {
+      // Small delay so new video elements are in the DOM
+      const id = setTimeout(() => assignStreamToVideos(), 50);
+      return () => clearTimeout(id);
+    }
+  }, [cameraActive, capturedImages, assignStreamToVideos]);
 
   // Expose camera functions via ref
   useImperativeHandle(ref, () => ({
@@ -71,11 +99,12 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCap
     stopCamera,
     takePhoto,
     handleRetake,
-    cameraActive
-  }), [cameraActive]);
+    cameraActive,
+    photosTaken,
+    allPhotosTaken: photosTaken >= 3
+  }), [cameraActive, photosTaken]);
 
   useEffect(() => {
-    // Auto-start camera on mount
     startCamera();
     return () => {
       if (streamRef.current) {
@@ -83,6 +112,14 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCap
       }
     };
   }, []);
+
+  // Callback ref to attach the stream to each video element as it mounts
+  const setVideoRef = (index) => (el) => {
+    videoRefs.current[index] = el;
+    if (el && streamRef.current) {
+      el.srcObject = streamRef.current;
+    }
+  };
 
   return (
     <>
@@ -101,15 +138,15 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImage = null, onImageCap
             <div className="photobooth-strip">
               {[0, 1, 2].map((index) => (
                 <div key={index} className="photobooth-frame">
-                  {capturedImage ? (
+                  {capturedImages[index] ? (
                     <img
-                      src={capturedImage}
+                      src={capturedImages[index]}
                       alt={`Portrait ${index + 1}`}
                       className="portrait-image"
                     />
-                  ) : cameraActive && index === 0 ? (
+                  ) : cameraActive ? (
                     <video
-                      ref={videoRef}
+                      ref={setVideoRef(index)}
                       autoPlay
                       playsInline
                       muted

@@ -399,6 +399,7 @@
 /* ───────────────── Keepsake Capture Area ───────────────── */
 .keepsake-capture-area {
   padding: 1rem;
+  padding-bottom: 0rem;
 }
 
 /* ───────────────── ScrollReveal ───────────────── */

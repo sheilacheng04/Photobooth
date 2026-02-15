@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [showMainContent, setShowMainContent] = useState(false);
-  const [capturedImage, setCapturedImage] = useState(null);
+  const [capturedImages, setCapturedImages] = useState([null, null, null]);
   const [letter, setLetter] = useState('');
   const [name, setName] = useState('');
   const keepsakeRef = useRef(null);
@@ -55,10 +55,10 @@ function App() {
         </div>
 
         <div ref={keepsakeRef} className="keepsake-capture-area">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 auto-rows-fr">
             {/* LEFT: The Portrait Frame — Output */}
-            <div className="flex flex-col items-center">
-              <div className="bg-vintage-cream border-2 border-double border-rose-gold rounded-cottage p-6 shadow-cottage w-full">
+            <div className="flex flex-col items-center h-full">
+              <div className="bg-vintage-cream border-2 border-double border-rose-gold rounded-cottage p-6 shadow-cottage w-full h-full">
                 <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1 text-center">
                   The Portrait Frame
                 </h3>
@@ -68,8 +68,8 @@ function App() {
                 <RoyalGallery 
                   ref={galleryRef}
                   portraitRef={portraitRef} 
-                  capturedImage={capturedImage}
-                  onImageCapture={setCapturedImage}
+                  capturedImages={capturedImages}
+                  onImageCapture={setCapturedImages}
                   letterName={name}
                   letterText={letter}
                 />
@@ -77,8 +77,8 @@ function App() {
             </div>
 
             {/* RIGHT: The Typewriter — Controls */}
-            <div className="flex flex-col items-center">
-              <div className="bg-vintage-cream border-2 border-double border-rose-gold rounded-cottage p-6 shadow-cottage w-full">
+            <div className="flex flex-col items-center h-full">
+              <div className="bg-vintage-cream border-2 border-double border-rose-gold rounded-cottage p-6 shadow-cottage w-full h-full">
                 <h3 className="font-playfair text-xl font-bold text-rose-gold mb-1 text-center">
                   The Typewriter
                 </h3>
@@ -88,7 +88,7 @@ function App() {
                 <WhistledownTypewriter 
                   portraitRef={portraitRef} 
                   galleryRef={galleryRef}
-                  capturedImage={capturedImage}
+                  capturedImages={capturedImages}
                   letter={letter}
                   setLetter={setLetter}
                   name={name}

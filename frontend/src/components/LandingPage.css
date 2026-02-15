@@ -5,11 +5,10 @@
 .landing-page {
   min-height: 100vh;
   background-color: #FFF5F7;
-  background-image:
-    /* Soft floral radial accents */
-    radial-gradient(ellipse at 15% 30%, rgba(226, 157, 164, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 70%, rgba(138, 154, 91, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(183, 110, 121, 0.06) 0%, transparent 60%);
+  background-image: url('https://i.pinimg.com/736x/a0/ac/d4/a0acd4128cb0fc042f29cde042e7db38.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   overflow: hidden;
   display: flex;
