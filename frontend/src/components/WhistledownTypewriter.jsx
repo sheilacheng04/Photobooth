@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
 
+const FRAME_IMAGES = [
+  '/frames/frame1.jpg',
+  '/frames/frame2.jpg',
+  '/frames/frame3.jpg',
+  '/frames/frame4.jpg',
+];
+
 const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter, setLetter, name, setName }) => {
   const [isSaving, setIsSaving] = useState(false);
+  const [selectedFrame, setSelectedFrame] = useState(null);
 
   const photosTaken = capturedImages ? capturedImages.filter(img => img !== null).length : 0;
   const allPhotosTaken = photosTaken >= 3;
-
-  const frameImages = [
-    'https://i.pinimg.com/736x/05/38/3b/05383b00f44604ba8127cd3741e3859a.jpg',
-    'https://i.pinimg.com/736x/0c/c9/6a/0cc96a58c5833803730a344e25e84b73.jpg',
-    'https://i.pinimg.com/1200x/c6/2a/ae/c62aae590d15ae7ecb1a328c5a99af4e.jpg',
-    'https://i.pinimg.com/1200x/e2/73/60/e2736084ff09258f9aaa99970cb6dc77.jpg'
-  ];
 
   const takePhoto = () => {
     if (galleryRef?.current) {
@@ -27,13 +28,12 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
   };
 
   const handleChangeFrame = () => {
-    const randomImage = frameImages[Math.floor(Math.random() * frameImages.length)];
-    const frameElement = document.querySelector('.keepsake-output-inner');
-    if (frameElement) {
-      frameElement.style.backgroundImage = `url('${randomImage}')`;
-      frameElement.style.backgroundSize = 'cover';
-      frameElement.style.backgroundPosition = 'center';
-    }
+    // Pick a random frame different from the current one
+    let newFrame;
+    do {
+      newFrame = FRAME_IMAGES[Math.floor(Math.random() * FRAME_IMAGES.length)];
+    } while (newFrame === selectedFrame && FRAME_IMAGES.length > 1);
+    setSelectedFrame(newFrame);
   };
 
   const handleSeal = async () => {
@@ -45,6 +45,9 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
       const canvas = await html2canvas(target, {
         scale: 2,
         useCORS: true,
+        allowTaint: false,
+        backgroundColor: null,
+        logging: false,
       });
       const link = document.createElement('a');
       link.download = `regency-keepsake-${Date.now()}.png`;
@@ -59,6 +62,16 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
 
   return (
     <section className="flex flex-col items-center w-full gap-5">
+      {/* Pass selected frame to the output via a hidden mechanism */}
+      {selectedFrame && (
+        <style>{`
+          .keepsake-output-inner {
+            background-image: url('${selectedFrame}') !important;
+            background-size: cover !important;
+            background-position: center !important;
+          }
+        `}</style>
+      )}
       {/* TOP: Take Photo / Retake Button */}
       <div className="w-full flex flex-col items-center gap-2">
         {allPhotosTaken ? (

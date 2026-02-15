@@ -105,6 +105,11 @@
   border-radius: 4px;
 }
 
+/* Mirror effect for live video feed only */
+video.portrait-image {
+  transform: scaleX(-1);
+}
+
 .portrait-placeholder {
   display: flex;
   flex-direction: column;
