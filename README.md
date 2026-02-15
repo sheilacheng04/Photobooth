@@ -2,9 +2,8 @@
 
 > *A Cottagecore Digital Photobooth & Guestbook Experience*
 
-A luxurious, fully-responsive web application that captures memories through a virtual photobooth, digital letter writing, and an elegant guestbook - all wrapped in a beautiful cottagecore aesthetic with rose gold tones and vintage charm.
+A fully-responsive web application that captures memories through a virtual photobooth, digital letter writing, and an elegant guestbook - all wrapped in a beautiful cottagecore aesthetic with rose gold tones and vintage charm.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![React](https://img.shields.io/badge/React-18.0-blue.svg)](https://reactjs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-10.0-red.svg)](https://nestjs.com/)
 
