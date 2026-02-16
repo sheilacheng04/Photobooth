@@ -146,6 +146,116 @@ video.portrait-image {
   overflow: hidden;
 }
 
+/* ───────────────── Desktop Capture Frame (Hidden, Always Desktop Format) ───────────────── */
+.keepsake-output-frame-desktop-capture {
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: #FFFDD0;
+  padding: 20px;
+  border: 3px double #B76E79;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 4px 25px rgba(183, 110, 121, 0.12),
+    0 1px 4px rgba(183, 110, 121, 0.08);
+  width: 520px;
+  margin: 0;
+}
+
+.keepsake-output-inner-desktop-capture {
+  background: #FFF8F0;
+  padding: 20px;
+  border-radius: 1rem;
+  border: 1px dashed rgba(183, 110, 121, 0.2);
+  display: flex;
+  flex-direction: row !important;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* Ensure photobooth frames in desktop capture are always desktop-sized */
+.keepsake-output-inner-desktop-capture .photobooth-strip {
+  display: flex;
+  flex-direction: column !important;
+  gap: 8px;
+  background: linear-gradient(
+    135deg,
+    #F5E6E8 0%,
+    #F0D4D8 50%,
+    #F5E6E8 100%
+  );
+  padding: 12px;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(183, 110, 121, 0.15);
+  box-shadow: 0 2px 10px rgba(183, 110, 121, 0.08);
+}
+
+.keepsake-output-inner-desktop-capture .photobooth-frame {
+  width: 145px !important;
+  height: 145px !important;
+  max-width: 145px !important;
+  flex: none !important;
+  border: 3px double rgba(183, 110, 121, 0.35);
+  background: linear-gradient(145deg, #FFFDD0, #FAF0E6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  aspect-ratio: 1;
+}
+
+.keepsake-output-inner-desktop-capture .keepsake-letter-output {
+  flex: 1;
+  width: auto !important;
+  background: #FFFDD0;
+  border-radius: 0.75rem;
+  padding: 18px;
+  min-height: 200px;
+  border: 1px dashed rgba(183, 110, 121, 0.2);
+  box-shadow: inset 0 1px 3px rgba(183, 110, 121, 0.04);
+  display: flex;
+  align-items: flex-start;
+  overflow-y: auto;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(183, 110, 121, 0.08) 27px,
+    rgba(183, 110, 121, 0.08) 28px
+  );
+}
+
+/* Force desktop font sizes in capture element regardless of viewport */
+.keepsake-output-inner-desktop-capture .letter-output-content p:first-child {
+  font-size: 1.125rem !important; /* 18px - desktop signature size */
+  line-height: 1.75rem !important;
+}
+
+.keepsake-output-inner-desktop-capture .letter-output-content p:last-child {
+  font-size: 0.75rem !important; /* 12px - desktop typewriter size */
+  line-height: 1.5rem !important;
+}
+
+.keepsake-output-inner-desktop-capture .letter-output-placeholder p {
+  font-size: 0.75rem !important; /* 12px */
+}
+
+.keepsake-output-inner-desktop-capture .portrait-placeholder span {
+  font-size: 0.625rem !important; /* 10px */
+}
+
+.keepsake-output-inner-desktop-capture .portrait-placeholder svg {
+  width: 2rem !important; /* 32px */
+  height: 2rem !important; /* 32px */
+}
+
 /* Photobooth Strip Wrapper */
 .photobooth-strip-wrapper {
   flex-shrink: 0;

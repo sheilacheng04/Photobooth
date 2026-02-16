@@ -134,8 +134,73 @@ const RoyalGallery = forwardRef(({ portraitRef, capturedImages = [null, null, nu
         </p>
       )}
 
+      {/* Hidden Desktop-Format Capture Element (Always Desktop Layout) */}
+      <div className="keepsake-output-frame-desktop-capture" ref={portraitRef}>
+        <div className="keepsake-output-inner-desktop-capture">
+          {/* Photobooth Strip */}
+          <div className="photobooth-strip-wrapper">
+            <div className="photobooth-strip">
+              {[0, 1, 2].map((index) => (
+                <div key={index} className="photobooth-frame">
+                  {capturedImages[index] ? (
+                    <img
+                      src={capturedImages[index]}
+                      alt={`Portrait ${index + 1}`}
+                      className="portrait-image"
+                    />
+                  ) : (
+                    <div className="portrait-placeholder">
+                      <svg
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-rose-gold/30 mb-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                        />
+                      </svg>
+                      <span className="font-body text-rose-gold/40 text-[10px]">
+                        Photo {index + 1}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Letter Output */}
+          <div className="keepsake-letter-output">
+            {letterText || letterName ? (
+              <div className="letter-output-content">
+                {letterName && (
+                  <p className="font-signature text-lg text-rose-gold mb-2 border-b border-rose-gold/20 pb-1">
+                    {letterName}
+                  </p>
+                )}
+                {letterText && (
+                  <p className="font-typewriter text-xs text-rose-gold/80 leading-relaxed whitespace-pre-wrap break-words">
+                    {letterText}
+                  </p>
+                )}
+              </div>
+            ) : (
+              <div className="letter-output-placeholder">
+                <p className="font-body text-xs text-rose-gold/30 italic text-center">
+                  Thy letter shall<br />appear here...
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Output Frame — Photobooth strip + letter display */}
-      <div className="keepsake-output-frame mx-auto" ref={portraitRef}>
+      <div className="keepsake-output-frame mx-auto">
         <div className="keepsake-output-inner">
           {/* Photobooth Strip */}
           <div className="photobooth-strip-wrapper">

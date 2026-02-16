@@ -37,17 +37,27 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
   };
 
   const handleSeal = async () => {
-    const target = document.querySelector('.keepsake-output-inner');
+    const target = document.querySelector('.keepsake-output-inner-desktop-capture');
     if (!target) return;
 
     setIsSaving(true);
     try {
+      // Ensure fonts are loaded before capturing
+      if (document.fonts) {
+        await document.fonts.ready;
+      }
+      
+      // Small delay to ensure everything is rendered
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
       const canvas = await html2canvas(target, {
         scale: 2,
         useCORS: true,
         allowTaint: false,
-        backgroundColor: null,
+        backgroundColor: '#FFF8F0',
         logging: false,
+        windowWidth: 520,
+        windowHeight: target.scrollHeight,
       });
       const link = document.createElement('a');
       link.download = `regency-keepsake-${Date.now()}.png`;
@@ -65,7 +75,8 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
       {/* Pass selected frame to the output via a hidden mechanism */}
       {selectedFrame && (
         <style>{`
-          .keepsake-output-inner {
+          .keepsake-output-inner,
+          .keepsake-output-inner-desktop-capture {
             background-image: url('${selectedFrame}') !important;
             background-size: cover !important;
             background-position: center !important;
