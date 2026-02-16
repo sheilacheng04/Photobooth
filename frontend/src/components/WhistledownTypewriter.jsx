@@ -37,8 +37,8 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
   };
 
   const handleSeal = async () => {
-    const target = document.querySelector('.keepsake-output-inner-desktop-capture');
-    if (!target) return;
+    const captureTarget = document.querySelector('.keepsake-output-inner-desktop-capture');
+    if (!captureTarget) return;
 
     setIsSaving(true);
     try {
@@ -46,22 +46,68 @@ const WhistledownTypewriter = ({ portraitRef, galleryRef, capturedImages, letter
       if (document.fonts) {
         await document.fonts.ready;
       }
-      
-      // Small delay to ensure everything is rendered
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
-      const canvas = await html2canvas(target, {
+
+      const canvas = await html2canvas(captureTarget, {
         scale: 2,
         useCORS: true,
-        allowTaint: false,
+        allowTaint: true,
         backgroundColor: '#FFF8F0',
         logging: false,
-        windowWidth: 520,
-        windowHeight: target.scrollHeight,
+        windowWidth: 1200,
+        onclone: (clonedDoc) => {
+          const clonedFrame = clonedDoc.querySelector('.keepsake-output-frame-desktop-capture');
+          if (clonedFrame) {
+            clonedFrame.style.left = '0px';
+            clonedFrame.style.top = '0px';
+            clonedFrame.style.position = 'fixed';
+          }
+        },
       });
+
+      // Create a new canvas with rounded corners
+      const finalCanvas = document.createElement('canvas');
+      finalCanvas.width = canvas.width;
+      finalCanvas.height = canvas.height;
+      const ctx = finalCanvas.getContext('2d');
+
+      // Draw rounded rectangle
+      const radius = 32; // 1rem at 2x scale
+      ctx.fillStyle = '#FFF8F0'; // Match background
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(finalCanvas.width - radius, 0);
+      ctx.quadraticCurveTo(finalCanvas.width, 0, finalCanvas.width, radius);
+      ctx.lineTo(finalCanvas.width, finalCanvas.height - radius);
+      ctx.quadraticCurveTo(finalCanvas.width, finalCanvas.height, finalCanvas.width - radius, finalCanvas.height);
+      ctx.lineTo(radius, finalCanvas.height);
+      ctx.quadraticCurveTo(0, finalCanvas.height, 0, finalCanvas.height - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      // Clip to rounded rectangle and draw the captured image
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(finalCanvas.width - radius, 0);
+      ctx.quadraticCurveTo(finalCanvas.width, 0, finalCanvas.width, radius);
+      ctx.lineTo(finalCanvas.width, finalCanvas.height - radius);
+      ctx.quadraticCurveTo(finalCanvas.width, finalCanvas.height, finalCanvas.width - radius, finalCanvas.height);
+      ctx.lineTo(radius, finalCanvas.height);
+      ctx.quadraticCurveTo(0, finalCanvas.height, 0, finalCanvas.height - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.clip();
+
+      // Draw the captured image inside the clipped region
+      ctx.drawImage(canvas, 0, 0);
+      ctx.restore();
+
       const link = document.createElement('a');
       link.download = `regency-keepsake-${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.href = finalCanvas.toDataURL('image/png');
       link.click();
     } catch (err) {
       console.error('Failed to capture keepsake:', err);

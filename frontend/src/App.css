@@ -149,9 +149,8 @@ video.portrait-image {
 /* ───────────────── Desktop Capture Frame (Hidden, Always Desktop Format) ───────────────── */
 .keepsake-output-frame-desktop-capture {
   position: fixed;
-  left: 0;
+  left: -9999px;
   top: 0;
-  opacity: 0;
   pointer-events: none;
   z-index: -1;
   background: #FFFDD0;
@@ -550,7 +549,7 @@ video.portrait-image {
     max-width: 460px;
   }
 
-  .photobooth-frame {
+  .keepsake-output-inner .photobooth-frame {
     width: 130px;
     height: 130px;
   }
@@ -588,25 +587,25 @@ video.portrait-image {
     min-height: auto;
   }
 
-  .photobooth-strip-wrapper {
+  .keepsake-output-inner .photobooth-strip-wrapper {
     width: 100%;
   }
 
-  .photobooth-strip {
+  .keepsake-output-inner .photobooth-strip {
     flex-direction: row;
     justify-content: center;
     padding: 10px;
     width: 100%;
   }
 
-  .photobooth-frame {
+  .keepsake-output-inner .photobooth-frame {
     width: 0;
     height: auto;
     flex: 1 1 0;
     max-width: 120px;
   }
 
-  .keepsake-letter-output {
+  .keepsake-output-inner .keepsake-letter-output {
     min-height: 120px;
     padding: 14px;
     width: 100%;
@@ -667,17 +666,17 @@ video.portrait-image {
     gap: 10px;
   }
 
-  .photobooth-strip {
+  .keepsake-output-inner .photobooth-strip {
     gap: 6px;
     padding: 8px;
   }
 
-  .photobooth-frame {
+  .keepsake-output-inner .photobooth-frame {
     max-width: 100px;
     border-width: 2px;
   }
 
-  .keepsake-letter-output {
+  .keepsake-output-inner .keepsake-letter-output {
     padding: 12px;
     font-size: 13px;
     min-height: 100px;
@@ -743,16 +742,16 @@ video.portrait-image {
     gap: 8px;
   }
 
-  .photobooth-strip {
+  .keepsake-output-inner .photobooth-strip {
     gap: 4px;
     padding: 6px;
   }
 
-  .photobooth-frame {
+  .keepsake-output-inner .photobooth-frame {
     max-width: 85px;
   }
 
-  .keepsake-letter-output {
+  .keepsake-output-inner .keepsake-letter-output {
     padding: 10px;
     font-size: 12px;
     min-height: 80px;
@@ -821,11 +820,11 @@ video.portrait-image {
     gap: 6px;
   }
 
-  .photobooth-frame {
+  .keepsake-output-inner .photobooth-frame {
     max-width: 70px;
   }
 
-  .keepsake-letter-output {
+  .keepsake-output-inner .keepsake-letter-output {
     padding: 8px;
     font-size: 11px;
   }
